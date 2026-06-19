@@ -1,0 +1,50 @@
+=== 1. CUSP POSITIONS (h1 scan, chi_max=40, dt=0.05) ===
+  h1=0.5: no peaks (smooth)
+  h1=0.8: t*=4.60 lambda=1.2625
+  h1=1.2: t*=2.70 lambda=1.7581
+  h1=1.5: t*=2.15 lambda=1.6801
+  h1=2.0: t*=1.65 lambda=1.7895  t*=4.75 lambda=1.2510
+  h1=3.0: t*=1.10 lambda=2.0949  t*=3.15 lambda=1.2741
+
+=== 2. h1=0.8 EXTENDED RUN (chi_max=80, dt=0.05, t_max=15) ===
+  Peaks found: 2
+    n=0: t*=4.60  lambda=1.2625  chi_A=24  trunc_err=1.53e-24
+    n=1: t*=14.90  lambda=1.1189  chi_A=80  trunc_err=5.19e-09
+  Observed spacing (t*_1 - t*_0): 10.30
+  Predicted t*_1 (= 3 * t*_0): 13.80
+  Shift from prediction: +1.10
+  S_A at t=15: 2.2790
+  chi_A at t=15: 80
+  trunc_err at t=15: 5.18e-09
+
+=== 3. CHI CONVERGENCE ERRORS (h1=2.0, vs chi_max=200) ===
+  chi=20: max_err=3.854e-11 at t=4.80  chi_A(t=5)=20  saturates_at=2.4000000000000004
+  chi=40: max_err=4.885e-15 at t=4.80  chi_A(t=5)=40  saturates_at=4.1000000000000005
+  chi=80: max_err=0.000e+00 at t=0.05  chi_A(t=5)=53  saturates_at=None
+  chi=200: chi_A(t=5)=53  (reference)
+
+=== 4. TROTTER ERROR (h1=2.0, chi_max=80) ===
+  dt=0.05 vs dt=0.025: max=8.156e-05  rms=2.958e-05
+  dt=0.1  vs dt=0.025: max=4.075e-04  rms=1.484e-04
+  Ratio dt=0.1/dt=0.05: 5.00  (expected ~4 for 2nd-order Trotter)
+
+=== 5. TRUNCATION ERROR PER STEP (h1=2.0, chi_max=40) ===
+  t=1.0: trunc_err=3.99e-25  chi_A=9
+  t=2.0: trunc_err=1.09e-24  chi_A=16
+  t=3.0: trunc_err=2.05e-24  chi_A=25
+  t=4.0: trunc_err=3.10e-24  chi_A=38
+  t=4.5: trunc_err=1.27e-21  chi_A=40
+  t=5.0: trunc_err=5.73e-20  chi_A=40
+
+=== 6. ENTANGLEMENT ENTROPY S_A (chi_max=200, h1=2.0) ===
+  t=1.0: S_A=0.1024  log(chi_max)=log(200)=5.2983
+  t=2.0: S_A=0.1871  log(chi_max)=log(200)=5.2983
+  t=3.0: S_A=0.3920  log(chi_max)=log(200)=5.2983
+  t=4.0: S_A=0.5252  log(chi_max)=log(200)=5.2983
+  t=5.0: S_A=0.6922  log(chi_max)=log(200)=5.2983
+
+=== 7. SATURATION LIMITS ===
+  log(20) = 2.9957
+  log(40) = 3.6889
+  log(80) = 4.3820
+  log(200) = 5.2983
