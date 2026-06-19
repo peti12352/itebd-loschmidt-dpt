@@ -75,6 +75,10 @@ results/figures/     -- publication figures (PNG)
 
 `docs/report_a4.pdf` gives a self-contained derivation of the iTEBD algorithm, Vidal canonical form, Suzuki-Trotter decomposition, and quantitative analysis of all results with error budgets.
 
+## Reference implementation
+
+M. Werner, [TNSClass](https://github.com/wernermiklos/TNSClass) — course materials for the BME TNS/DMRG course. The Vidal canonical form conventions and index layout in `src/tns/vidal_state.py` follow `Class10/iTEBD_XXZ.m` from that repository (MATLAB). This project extends it to the TFIM, adds 2nd-order Trotter, the Loschmidt echo observable, and convergence analysis.
+
 ## References
 
 - M. Heyl, A. Polkovnikov, S. Kehrein, PRL 110, 135704 (2013)
