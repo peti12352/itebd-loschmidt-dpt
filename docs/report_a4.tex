@@ -130,31 +130,68 @@ initial condition for studying DPT dynamics.
 
 \subsection{Why the Hilbert space can be compressed}
 
-A general state on $L$ spins requires $2^L$ complex amplitudes: one per
-configuration of all spins. This is the actual chain, cut at one point into a
-left piece and a right piece, not an abstract relabeling. ``Left'' is every
-site to one side of the cut, ``right'' is every site to the other side. The
-Schmidt decomposition of Eq.~\eqref{eq:schmidt} below is exactly the statement
-that the joint state of these two physical halves can be written as a sum of
-$\chi$ pairs of (left state, right state), each weighted by $\lambda_\alpha$.
-$\chi$ is not a free parameter, it is the actual number of such pairs needed,
-and it equals the rank of the reduced density matrix on either half.
+\textbf{Reduced density matrices.} For a pure state $\ket{\psi}$, the density
+matrix is simply $\rho = \ket{\psi}\bra{\psi}$: a complete description of the
+state, equivalent to $\ket{\psi}$ itself. Cutting the chain into a left half
+$L$ and a right half $R$, the reduced density matrix of the left half is
+obtained by tracing out (summing over) every right-half degree of freedom,
+\begin{equation}
+  \rho_L = \mathrm{Tr}_R\, \rho = \mathrm{Tr}_R\, \ket{\psi}\bra{\psi}.
+\end{equation}
+$\rho_L$ is what an observer with access to only the left half would measure:
+it answers every question about the left subsystem alone, with the right
+subsystem averaged over. Inserting the Schmidt decomposition,
+Eq.~\eqref{eq:schmidt}, the trace over $R$ collapses onto the orthonormal
+$\ket{v_\alpha}_R$ states, giving
+\begin{equation}
+  \rho_L = \sum_{\alpha=0}^{\chi-1} \lambda_\alpha^2\, \ket{u_\alpha}_L\bra{u_\alpha}_L.
+  \label{eq:rho_L}
+\end{equation}
+This is already diagonal: the Schmidt vectors $\ket{u_\alpha}_L$ are exactly
+the eigenvectors of $\rho_L$, with eigenvalues $\lambda_\alpha^2 \geq 0$
+summing to 1 (probabilities). The \emph{rank} of $\rho_L$, the number of
+nonzero eigenvalues, is precisely $\chi$. So $\chi$ is not an abstract index
+count, it is the number of distinguishable outcomes a measurement on the left
+half alone could ever produce, given everything the right half could be
+correlated with. A product state has $\rho_L$ pure (rank 1, $\chi=1$): the
+left half is in a definite state regardless of the right half. The von
+Neumann entanglement entropy used throughout this report,
+$S_L = -\mathrm{Tr}\,\rho_L \ln \rho_L = -\sum_\alpha \lambda_\alpha^2 \ln
+\lambda_\alpha^2$, is the Shannon entropy of this eigenvalue distribution: it
+is zero exactly when $\chi=1$, and grows with $\chi$ and with how evenly the
+weight $\lambda_\alpha^2$ is spread across the $\chi$ Schmidt modes.
 
-Compression to small $\chi$ is possible because of two physical facts, not
-because we choose to throw information away. First, ground states of gapped,
-local Hamiltonians obey an area law: the entanglement entropy of any
-bipartition is bounded by a constant, independent of how large the two
-halves are, instead of growing with the size of the smaller half (a volume
-law, which is what a generic random state has). Second, for the
-\emph{dynamics} studied here, the Lieb-Robinson bound limits how fast
-entanglement can spread after a quench from a low-entanglement initial state:
-information and correlations travel at a finite effective speed, so
-entanglement entropy across any cut grows at most linearly in time, not
-discontinuously to its maximum value. Both facts mean $\chi$ stays small (or
-grows only polynomially with time) for the states that actually appear in
-this simulation, even though $\chi$ could in principle be as large as
+\textbf{What $\chi$ represents physically.} On the 1D lattice, $\chi$ at a
+given bond is the number of independent channels through which the left half
+and the right half can be correlated at that bond. A classical analogy: if a
+cable between two halves of a circuit carries $\chi$ independent wires,
+$\chi=1$ means the two sides can only ever agree on one shared value (no real
+information flows), while large $\chi$ allows many simultaneous, independent
+correlations. Entanglement entropy is bounded by the channel count,
+$S_L \leq \ln \chi$, with equality when all $\chi$ Schmidt weights are equal
+($\lambda_\alpha^2 = 1/\chi$ for all $\alpha$, the maximally mixed case).
+Equivalently, representing a state with entanglement entropy $S_L$ requires
+at least $\chi \geq e^{S_L}$ Schmidt modes. This inequality is the precise
+link between the physics of entanglement and the cost of the MPS
+representation below: bounding $S_L$ bounds the minimum $\chi$ needed.
+
+Compression to small $\chi$ is possible because of two physical facts about
+$S_L$, not because we choose to throw information away. First, ground states
+of gapped, local Hamiltonians obey an area law: $S_\ell = O(1)$ for a
+bipartition at site $\ell$, a constant independent of the subsystem size
+$\ell$ (or $L-\ell$), as opposed to a volume law $S_\ell \sim \alpha\min(\ell,
+L-\ell)$, which is what a generic (Haar-random) state has, and which would
+require $\chi \sim e^{\alpha \ell}$, exponential in system size. Second, for
+the \emph{dynamics} studied here, the Lieb-Robinson bound limits how fast
+$S_\ell(t)$ can grow after a quench from a low-entanglement initial state:
+information and correlations travel at a finite effective speed $v_{\rm LR}$,
+giving $S_\ell(t) \lesssim v_{\rm LR}\, t$ (linear in time) rather than an
+instantaneous jump to the volume-law maximum. Both facts mean $\chi \geq
+e^{S_\ell(t)}$ stays small, or grows at most as $e^{v_{\rm LR} t}$ over the
+finite simulation window, for the states that actually appear in this
+simulation, even though $\chi$ could in principle be as large as
 $2^{\min(L,\,L-\ell)}$ for an arbitrary state. This is the entire reason MPS
-methods work at all: they are a generic-purpose tool that happens to be very
+methods work at all: they are a general-purpose tool that happens to be very
 efficient on the particular, low-entanglement corner of Hilbert space that
 physical time evolution actually explores.
 
