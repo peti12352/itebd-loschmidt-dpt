@@ -16,3 +16,4 @@ build/
 *.fdb_latexmk
 *.synctex.gz
 docs/exam_prep.*
+docs/phase*.md
