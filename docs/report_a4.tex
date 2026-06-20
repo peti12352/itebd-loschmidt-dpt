@@ -180,12 +180,17 @@ $S_L$, not because we choose to throw information away. First, ground states
 of gapped, local Hamiltonians obey an area law: $S_\ell = O(1)$ for a
 bipartition at site $\ell$, a constant independent of the subsystem size
 $\ell$ (or $L-\ell$), as opposed to a volume law $S_\ell \sim \alpha\min(\ell,
-L-\ell)$, which is what a generic (Haar-random) state has, and which would
-require $\chi \sim e^{\alpha \ell}$, exponential in system size. Second, for
-the \emph{dynamics} studied here, the Lieb-Robinson bound limits how fast
-$S_\ell(t)$ can grow after a quench from a low-entanglement initial state:
-information and correlations travel at a finite effective speed $v_{\rm LR}$,
-giving $S_\ell(t) \lesssim v_{\rm LR}\, t$ (linear in time) rather than an
+L-\ell)$, which is what a generic state has (a state drawn uniformly at
+random from the full Hilbert space, with no structure imposed, also called
+Haar-random), and which would require $\chi \sim e^{\alpha \ell}$,
+exponential in system size. Second, for the \emph{dynamics} studied here,
+the Lieb-Robinson bound limits how fast $S_\ell(t)$ can grow after a quench
+from a low-entanglement initial state. This bound is a general property of
+any lattice model with short-range interactions (such as the nearest-neighbor
+TFIM here): although nonrelativistic quantum mechanics has no exact speed
+limit, local interactions still cannot transmit correlations between two
+points faster than some finite effective speed $v_{\rm LR}$, so
+$S_\ell(t) \lesssim v_{\rm LR}\, t$ (linear in time) rather than an
 instantaneous jump to the volume-law maximum. Both facts mean $\chi \geq
 e^{S_\ell(t)}$ stays small, or grows at most as $e^{v_{\rm LR} t}$ over the
 finite simulation window, for the states that actually appear in this
