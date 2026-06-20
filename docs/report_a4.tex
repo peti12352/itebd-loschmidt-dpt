@@ -190,10 +190,9 @@ instantaneous jump to the volume-law maximum. Both facts mean $\chi \geq
 e^{S_\ell(t)}$ stays small, or grows at most as $e^{v_{\rm LR} t}$ over the
 finite simulation window, for the states that actually appear in this
 simulation, even though $\chi$ could in principle be as large as
-$2^{\min(L,\,L-\ell)}$ for an arbitrary state. This is the entire reason MPS
-methods work at all: they are a general-purpose tool that happens to be very
-efficient on the particular, low-entanglement corner of Hilbert space that
-physical time evolution actually explores.
+$2^{\min(L,\,L-\ell)}$ for an arbitrary state. MPS methods work because they
+are efficient precisely on this low-entanglement corner of Hilbert space,
+the corner that physical time evolution actually explores.
 
 There is a second compression at work, specific to this project: translation
 invariance. The chain is infinite, so representing it site by site is
@@ -272,7 +271,7 @@ $\Lambda^A_0 \geq \Lambda^A_1 \geq \cdots \geq 0$.
 These are exactly the Schmidt values at the bond (the singular values produced
 by SVD, as in Eq.~\eqref{eq:schmidt}). $\Lambda^A_\gamma$ gives the weight of
 the $\gamma$-th Schmidt mode at the A-bond; $\Lambda^B_\alpha$ does the same at
-B-bonds. There is nothing more to them than that.
+B-bonds.
 
 \textbf{What $\Gamma$ is.} Each $\Gamma$ is a 3-index array of numbers (a rank-3
 tensor). $\Gamma^A$ has shape $\chi_B \times 2 \times \chi_A$: three indices
